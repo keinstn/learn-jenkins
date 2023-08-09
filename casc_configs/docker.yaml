@@ -1,0 +1,14 @@
+jenkins:
+  clouds:
+    - docker:
+        dockerApi:
+          dockerHost:
+            uri: "unix:///var/run/docker.sock"
+        name: "docker-host"
+        templates:
+          - connector: "attach"
+            dockerTemplateBase:
+              image: "jenkins/agent"
+            labelString: "jenkins-agent"
+            name: "jenkins-agent"
+            remoteFs: "/home/jenkins/agent"
